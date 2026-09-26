@@ -54,11 +54,14 @@ nav a {
     display: block;
     border-left: 4px solid #38bdf8;
     margin: .25rem;
+    background-color: rgb(84,143, 215);
+    color: rgb(255, 255, 255);
 }
 
 nav a:hover {
-    background-color: #334155;
+    background-color: #3868ab;
 }
+
 
 main {
     padding: 1rem;
@@ -102,10 +105,52 @@ footer {
     margin-top: 1rem;
 }
 
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* ===== Media Query (Medium) ===== */
+
+@media screen and (min-width: 800px) {
+  body {
+    grid-template-columns: 1fr; /* Set body grid to 1 single column */
+    margin: 0 auto; /* Centers container on larger viewports */
+    background-color: rgb(46, 155, 79);
+  }
+
+  header, nav, main, footer {
+    grid-column: 1; /* Reset grid column span for single column layout */
+  }
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 28px;
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+}
+
+  /* Grid layout for main content to stack sections vertically */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 300px; /* Single column stack */
+    gap: 20px;
+  }
+
+  /* Ensure card rows align smoothly inside stacked sections */
+  .card-row > section {
+    flex: 1 1 200px;
+    
+  }
+}
+
 /* ===== Media Query (Medium) ===== */
 /* write a media query for a screen with at least 800px */
 /* change the body's grid template to 1fr 300px */
 /* target the header, nav, and footer and style their grid-column to 1/-1 */
-/* target the nav and display it flex, spaceed around */
+/* target the nav and display it flex, spaced around */
 /* target the .card-row to display flex */
-/* target the sections in .card-row witha width for 30% */
+/* target the sections in .card-row with a width for 30% */
