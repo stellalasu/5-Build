@@ -11,15 +11,16 @@
 }
 */
 
-/* ===== GLOBAL (Base) Styles ===== */
+/* GLOBAL / MOBILE FIRST (Under 800px) */
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     margin: 0;
     background-color: #0f172a;
     color: #e2e8f0;
-    min-width:500px;
     display:grid;
     grid-template-columns:1fr;
+    
 }
 
 header {
@@ -71,22 +72,14 @@ img {
     width:100%;
 }
 
-#screenings, #workshops, #collaborations {
-    background-color: #1e293b;
-    padding: 1rem;
-    padding: 1rem;
-    border-left: 4px solid #38bdf8;
-}
-
 aside {
     background-color: #38bdf8;
     color: #1e293b;
     padding: 1rem;
-    padding: 1rem;
 }
 
 a {
-    display:block;
+    display:inline-block;
     background-color:#020617;
     color:#e2e8f0;
     padding:1rem 2rem;
@@ -105,46 +98,49 @@ footer {
     margin-top: 1rem;
 }
 
-.card-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-/* ===== Media Query (Medium) ===== */
-
+/* ===== MEDIA QUERY (Desktop with Larger Screens >= 800px) ===== */
 @media screen and (min-width: 800px) {
-  body {
-    grid-template-columns: 1fr; /* Set body grid to 1 single column */
-    margin: 0 auto; /* Centers container on larger viewports */
-    background-color: rgb(46, 155, 79);
-  }
+    body {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-  header, nav, main, footer {
-    grid-column: 1; /* Reset grid column span for single column layout */
-  }
-  nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 28px;
-    list-style: none;
-    padding: 1rem;
-    margin: 0;
-}
+    /* Full-width elements spanning both columns */
+    header, nav, footer {
+        grid-column: 1 / -1;
+    }
 
-  /* Grid layout for main content to stack sections vertically */
-  main {
-    display: grid;
-    grid-template-columns: 1fr 300px; /* Single column stack */
-    gap: 20px;
-  }
+    /* Horizontal navigation layout */
+    nav ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0.5rem 1rem;
+    }
 
-  /* Ensure card rows align smoothly inside stacked sections */
-  .card-row > section {
-    flex: 1 1 200px;
-    
-  }
+    nav li {
+        flex: 1;
+        text-align: center;
+    }
+
+    nav a {
+        border-left: none;
+        border-bottom: 3px solid #38bdf8;
+        margin: 0 0.25rem;
+    }
+
+    /* Main content takes left column, Aside takes right column */
+    main {
+        grid-column: 1 / 2;
+    }
+
+    aside {
+        grid-column: 2 / 3;
+        margin: 1rem 1rem 1rem 0;
+        align-self: start;
+    }
 }
 
 /* ===== Media Query (Medium) ===== */
